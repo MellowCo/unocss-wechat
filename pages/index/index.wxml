@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="flex flex-col items-center text-hex-8e44ad mb-10">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="overflow-hidden w-128 h-128 m-20 rounded-1_2" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+
+      <view class="bg-hex-81ecec_50">hello unocss</view>
+    </block>
+  </view>
+  <view class="text-center animate-swing animate-iteration-infinite">
+    <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 border-none"
+      bind:tap="bindViewTap" hover-class="bg-green-700">
+      btn
+    </button>
+  </view>
+</view>

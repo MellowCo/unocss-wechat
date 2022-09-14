@@ -1,0 +1,12 @@
+/**app.wxss**/
+@import "./unocss.wxss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 200rpx 0;
+  height: 100%;
+}
