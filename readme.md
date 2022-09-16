@@ -54,7 +54,14 @@ export default defineConfig(
 
 
 ---
-4. 导入 `unocss.wxss`
+4. 运行 `npm run unocss`
+> `wxml` 内容变化，触发生成新的 `unocss.wxss`
+
+![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209141401533.png)
+
+
+---
+5. 导入 `unocss.wxss`
 > 在 `app.wxss` 导入生成的 `unocss.wxss`
 
 ```css
@@ -71,12 +78,6 @@ export default defineConfig(
   height: 100%;
 }
 ```
-
----
-
-5. 运行 `npm run unocss`
-> wxml 内容变化，触发生成新的 wxss
-![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209141401533.png)
 
 ![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209141354363.gif)
 
