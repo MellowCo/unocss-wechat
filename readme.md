@@ -25,6 +25,7 @@ import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
 export default defineConfig(
   {
+    include: [/\.wxml$/],
     presets: [
       presetWeapp(),
     ],
@@ -83,6 +84,33 @@ export default defineConfig(
 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名
 
 `bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50`，或者 使用 transformer
+
+---
+使用 vscode `unocss` 插件
+
+1. vscode `settings.json`
+```json
+  // 文件类型
+"files.associations": {
+  "*.wxml": "html",
+},
+```
+
+2. unocss.config.js 设置 `include`
+```js
+import { defineConfig } from "unocss";
+import presetWeapp from 'unocss-preset-weapp'
+export default defineConfig(
+  {
+    include: [/\.wxml$/],
+    presets: [
+      presetWeapp(),
+    ],
+  }
+)
+```
+
+![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209212036840.gif)
 
 ---
 

@@ -1,15 +1,18 @@
 <view class="container">
-  <view class="flex flex-col items-center text-hex-8e44ad mb-10">
+  <view class="flex flex-col items-center text-hex-8e44ad mb-10 flex flex-col items-center animate">
     <block wx:if="{{canIUseOpenData}}">
       <view class="overflow-hidden w-128 h-128 m-20 rounded-1_2" bindtap="bindViewTap">
         <open-data type="userAvatarUrl"></open-data>
       </view>
       <view class="bg-hex-81ecec_50 mb-5">hello unocss</view>
-      <view class="text--w-123ccc-s-90 bg--fl-rgba-bl-1-co-2-co-3-co-0-d-5-br--fr-">hello unocss</view>
+      <view class="text--w-123ccc-s-90 bg--fl-rgba-bl-1-co-2-co-3-co-0-d-5-br--fr-">
+        hello unocss
+      </view>
     </block>
   </view>
   <view class="text-center animate-swing animate-iteration-infinite">
-    <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 border-none" bind:tap="bindViewTap" hover-class="bg-green-700">
+    <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 border-none"
+      bind:tap="bindViewTap" hover-class="bg-green-700">
       btn
     </button>
   </view>
