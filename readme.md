@@ -4,8 +4,11 @@
 
 ![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209141354363.gif)
 
+---
 
-
+相关链接
+* [UnoCSS](https://github.com/unocss/unocss) - 即时按需原子CSS引擎
+* [unocss-preset-weapp](https://github.com/MellowCo/unocss-preset-weapp) - unocss小程序预设
 
 ---
 ## 使用方法
@@ -93,22 +96,23 @@ import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
 import { transformerClass } from 'unocss-preset-weapp/transformer';
 
+const include = [/\.wxml$/]
+
 export default defineConfig({
+  include,
   presets: [
     presetWeapp(),
   ],
   
   transformers:[
     transformerClass({
-      include: [/\.wxml$/,]
+      include
     })
   ]
 })
 ```
 
-![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209202104828.gif)
+![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209212019320.gif)
 
 
-相关链接
-* [UnoCSS](https://github.com/unocss/unocss) - 即时按需原子CSS引擎
-* [unocss-preset-weapp](https://github.com/MellowCo/unocss-preset-weapp) - unocss小程序预设
+
