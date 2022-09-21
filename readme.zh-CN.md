@@ -1,26 +1,25 @@
-
 <H1 align='center'>
 unocss-wechat
 </H1>
 
 
 <p align='center'>
-<b>English</b> | <a href="https://github.com/MellowCo/unocss-wechat/blob/main/readme.zh-CN.md">简体中文</a>
+<a href="https://github.com/MellowCo/unocss-wechat/blob/main/readme.md">English</a> | <b>简体中文</b>
 </p>
 
-miniprogram，unocss example
+原生小程序，unocss示例
 
 ![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209141354363.gif)
 
 ---
 
-related links
-* [UnoCSS](https://github.com/unocss/unocss) - the instant on-demand atomic css engine.
-* [unocss-preset-weapp](https://github.com/MellowCo/unocss-preset-weapp) - the unocss preset for wechat miniprogram.
+相关链接
+* [UnoCSS](https://github.com/unocss/unocss) - 即时按需原子CSS引擎
+* [unocss-preset-weapp](https://github.com/MellowCo/unocss-preset-weapp) - unocss小程序预设
 
 ---
-## Usage
-1. [use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
+## 使用方法
+1. [小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
 
 ```shell
 npm -D unocss unocss-preset-weapp
@@ -42,8 +41,8 @@ export default defineConfig(
 ```
 
 ---
-3. `package.json`，setting `script`
-> use `@unocss/cli` to listen to file content，[documents](https://github.com/unocss/unocss/tree/main/packages/cli)
+3. 在`package.json`，设置 `script`
+> 使用 `@unocss/cli` 监听文件内容，[参考文档](https://github.com/unocss/unocss/tree/main/packages/cli)
 ```json
 {
   "devDependencies": {
@@ -59,15 +58,15 @@ export default defineConfig(
 
 
 ---
-4. run `npm run unocss`
-> `wxml` content changes, trigger the generation of new `unocss.wxss`
+4. 运行 `npm run unocss`
+> `wxml` 内容变化，触发生成新的 `unocss.wxss`
 
 ![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209141401533.png)
 
 
 ---
-5. import `unocss.wxss`
->  in `app.wxss`, impoort generated ` unocss.wxss`
+5. 导入 `unocss.wxss`
+> 在 `app.wxss` 导入生成的 `unocss.wxss`
 
 ```css
 /**app.wxss**/
@@ -88,22 +87,23 @@ export default defineConfig(
 
 ---
 
-## Notice
-because the miniprogram does not support escape class, like `\` `\:` `\[` `\$` `\.`
+## 注意事项
+由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名
 
-`bg-#81ecec/50` need transform  `bg-hex-81ecec_50`，or use transformer
+`bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50`，或者 使用 transformer
 
 ---
-use vscode `unocss` plugin
+使用 vscode `unocss` 插件
 
 1. vscode `settings.json`
 ```json
+  // 文件类型
 "files.associations": {
   "*.wxml": "html",
 },
 ```
 
-2. unocss.config.js setting `include`
+2. unocss.config.js 设置 `include`
 ```js
 import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
@@ -121,11 +121,11 @@ export default defineConfig(
 
 ---
 
-## Transformer
-@unocss/cli with [0.45.22](https://github.com/unocss/unocss/releases/tag/v0.45.22) version can use `transformer`
+## 使用 transformer
+@unocss/cli 在 [0.45.22](https://github.com/unocss/unocss/releases/tag/v0.45.22) 版本支持使用 `transformer`
 
 * unocss.confit.js
-> add `transformerClass`，setting include `wxml`
+> 添加 `transformerClass`，设置转换 `wxml` 文件
 ```js
 import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
