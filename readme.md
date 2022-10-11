@@ -23,7 +23,7 @@ related links
 1. [use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
 
 ```shell
-npm -D unocss unocss-preset-weapp
+npm -D i unocss unocss-preset-weapp
 ```
 
 ---
