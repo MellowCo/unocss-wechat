@@ -18,7 +18,65 @@ unocss-wechat
 * [unocss-preset-weapp](https://github.com/MellowCo/unocss-preset-weapp) - unocss小程序预设
 
 ---
-## 使用方法
+## 设置 unocss 预设
+
+> 两种方法任选一种
+
+### 方法一： 使用通用配置
+
+> 此方法使用 `unocss` 内置预设，通过以下配置解决
+>
+> 1. 解决小程序不支持 * 选择器
+> 2. rem单位 转 rpx
+
+1. [小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss`
+
+```sh
+npm -D unocss
+```
+
+
+
+2. unocss.config
+
+```js
+import { defineConfig, presetUno } from "unocss";
+
+const remRE = /^-?[\.\d]+rem$/
+
+export default defineConfig(
+  {
+    presets: [
+      presetUno(),
+    ],
+    theme:{
+      // 解决小程序不支持 * 选择器
+      preflightRoot: ["page,::before,::after"]
+    },
+    postprocess(util) {
+      // 自定义rem 转 rpx
+      util.entries.forEach((i) => {
+        const value = i[1]
+        if (value && typeof value === 'string' && remRE.test(value))
+          i[1] = `${value.slice(0, -3) * 16 * 2}rpx`
+      })
+    },
+  }
+)
+```
+
+
+
+---
+
+### 方法二：使用 unocss-preset-weapp 预设
+
+> `unocss-preset-weapp` 内部已经解决小程序不兼容的相关问题
+>
+> 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名,`bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50`表示
+>
+> 或者 使用 transformer
+
 1. [小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
 
 ```shell
@@ -26,7 +84,8 @@ npm -D unocss unocss-preset-weapp
 ```
 
 ---
-2. unocss.config.js
+2. unocss.config
+
 ```js
 import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
@@ -41,7 +100,10 @@ export default defineConfig(
 ```
 
 ---
-3. 在`package.json`，设置 `script`
+## 生成wxss文件
+
+在`package.json`，设置 `script`
+
 > 使用 `@unocss/cli` 监听文件内容，[参考文档](https://github.com/unocss/unocss/tree/main/packages/cli)
 ```json
 {
@@ -87,15 +149,10 @@ export default defineConfig(
 
 ---
 
-## 注意事项
-由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名
+## unocss插件
 
-`bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50`，或者 使用 transformer
+* vscode `settings.json`
 
----
-使用 vscode `unocss` 插件
-
-1. vscode `settings.json`
 ```json
   // 文件类型
 "files.associations": {
@@ -103,21 +160,9 @@ export default defineConfig(
 },
 ```
 
-2. unocss.config.js 设置 `include`
-```js
-import { defineConfig } from "unocss";
-import presetWeapp from 'unocss-preset-weapp'
-export default defineConfig(
-  {
-    include: [/\.wxml$/],
-    presets: [
-      presetWeapp(),
-    ],
-  }
-)
-```
+<img src="https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209212036840.gif" style="zoom:50%;" />
 
-![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209212036840.gif)
+
 
 ---
 
