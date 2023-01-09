@@ -75,7 +75,7 @@ export default defineConfig(
 >
 > 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名,`bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50`表示
 >
-> 或者 使用 transformer
+> 或者 使用 [transformer](https://github.com/MellowCo/unocss-wechat/blob/main/readme.zh-CN.md#%E4%BD%BF%E7%94%A8-transformer)
 
 1. [小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
 
