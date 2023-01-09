@@ -23,7 +23,7 @@ related links
 1. [use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
 
 ```shell
-npm -D unocss unocss-preset-weapp
+npm -D i unocss unocss-preset-weapp
 ```
 
 ---
@@ -124,7 +124,7 @@ export default defineConfig(
 ## Transformer
 @unocss/cli with [0.45.22](https://github.com/unocss/unocss/releases/tag/v0.45.22) version can use `transformer`
 
-* unocss.confit.js
+* unocss.config.js
 > add `transformerClass`，setting include `wxml`
 ```js
 import { defineConfig } from "unocss";
