@@ -10,10 +10,11 @@ export default defineConfig(
     presets: [
       presetWeapp(),
     ],
-    
-    transformers:[
+
+    transformers: [
       transformerClass({
-        include
+        include,
+        classTags: false
       })
     ]
   }

@@ -12,7 +12,7 @@
   </view>
   <view class="text-center animate-swing animate-iteration-infinite">
     <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 border-none"
-      bind:tap="bindViewTap" hover-class="bg-green-700">
+      bind:tap="bindViewTap" hover-class="bg-green-7001">
       btn
     </button>
   </view>

@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "unocss": "^0.48.3",
-    "unocss-preset-weapp": "^0.3.0"
+    "unocss": "^0.51.12",
+    "unocss-preset-weapp": "^0.6.1"
   },
   "scripts": {
     "unocss": "unocss pages/**/*.wxml -c unocss.config.js --watch -o unocss.wxss",
