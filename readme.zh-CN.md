@@ -73,7 +73,11 @@ export default defineConfig(
 
 > `unocss-preset-weapp` 内部已经解决小程序不兼容的相关问题
 >
-> 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名,`bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50`表示
+> 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名, 
+> 
+> 使用 `hex` 代替 `#` , `_` 代替 `:`  `/`
+> 
+> 例如 `bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50` 表示
 >
 > 或者 使用 [transformer](https://github.com/MellowCo/unocss-wechat/blob/main/readme.zh-CN.md#%E4%BD%BF%E7%94%A8-transformer)
 
