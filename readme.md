@@ -41,8 +41,7 @@ import { defineConfig, presetUno } from "unocss";
 
 const remRE = /^-?[\.\d]+rem$/
 
-export default defineConfig(
-  {
+export default defineConfig({
     presets: [
       presetUno(),
     ],
@@ -58,8 +57,7 @@ export default defineConfig(
           i[1] = `${value.slice(0, -3) * 16 * 2}rpx`
       })
     },
-  }
-)
+  })
 ```
 
 ---
@@ -68,11 +66,15 @@ export default defineConfig(
 > this method uses the `unocss-preset-weapp` preset, which solves the following configuration
 >
 > because the miniprogram does not support escape class, like `\` `\:` `\[` `\$` `\.`, so need transform  `bg-#81ecec/50` to `bg-hex-81ecec_50`
->  
-> or use [transformer](https://github.com/MellowCo/unocss-wechat#transformer)
+
+1. use 'hex' instead of '#' , `_` instead of `:` `/`
+    * for example, `bg-#81ecec/50` can be converted to `bg-hex-81ecec_50`
+
+2. for '`hover:` and `active:`, `separators` can be set to specify the separator
+    * for example, setting `separators` to `__`, `hover:bg-red-500` can be converted to `hover__bg-red-500`
 
 
-1. [use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
+[use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
 
 ```shell
 npm -D unocss unocss-preset-weapp
@@ -84,14 +86,20 @@ npm -D unocss unocss-preset-weapp
 ```js
 import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
-export default defineConfig(
-  {
-    include: [/\.wxml$/],
-    presets: [
-      presetWeapp(),
-    ],
-  }
-)
+
+const include = [/\.wxml$/]
+
+export default defineConfig({
+  content:{
+    pipeline:{
+      include
+    }
+  },
+  presets: [
+    presetWeapp(),
+  ],
+  separators:'__'
+})
 ```
 
 ---
@@ -101,10 +109,6 @@ export default defineConfig(
 > use `@unocss/cli` to listen to file content，[documents](https://github.com/unocss/unocss/tree/main/packages/cli)
 ```json
 {
-  "devDependencies": {
-    "unocss": "^0.45.21",
-    "unocss-preset-weapp": "^0.1.13"
-  },
   "scripts": {
      "unocss": "unocss pages/**/*.wxml -c unocss.config.js --watch -o unocss.wxss",
      "unocss:build": "unocss pages/**/*.wxml -c unocss.config.js -o  unocss.wxss"
@@ -157,7 +161,7 @@ export default defineConfig(
 ---
 ## transformer
 
-@unocss/cli with [0.45.22](https://github.com/unocss/unocss/releases/tag/v0.45.22) version can use `transformer`
+using `transformer` in mini programs will change the original file and is not recommended
 
 * unocss.config.js
 > add `transformerClass`，setting include `wxml`
@@ -169,7 +173,11 @@ import { transformerClass } from 'unocss-preset-weapp/transformer';
 const include = [/\.wxml$/]
 
 export default defineConfig({
-  include,
+  content:{
+    pipeline:{
+      include
+    }
+  },
   presets: [
     presetWeapp(),
   ],

@@ -44,8 +44,7 @@ import { defineConfig, presetUno } from "unocss";
 
 const remRE = /^-?[\.\d]+rem$/
 
-export default defineConfig(
-  {
+export default defineConfig({
     presets: [
       presetUno(),
     ],
@@ -61,8 +60,7 @@ export default defineConfig(
           i[1] = `${value.slice(0, -3) * 16 * 2}rpx`
       })
     },
-  }
-)
+  })
 ```
 
 
@@ -74,14 +72,16 @@ export default defineConfig(
 > `unocss-preset-weapp` 内部已经解决小程序不兼容的相关问题
 >
 > 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名, 
-> 
-> 使用 `hex` 代替 `#` , `_` 代替 `:`  `/`
-> 
-> 例如 `bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50` 表示
->
-> 或者 使用 [transformer](https://github.com/MellowCo/unocss-wechat/blob/main/readme.zh-CN.md#%E4%BD%BF%E7%94%A8-transformer)
 
-1. [小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
+1. 使用 `hex` 代替 `#` , `_` 代替 `:`  `/`
+    * 例如 `bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50` 表示
+
+2. 针对 `hover:` 和 `avtive:`, 可以设置 `separators` 指定分隔符
+    * 例如设置 `separators` 为 `__`，`hover:bg-red-500` 可以转换为 `hover__bg-red-500` 表示
+
+
+
+[小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
 
 ```shell
 npm -D unocss unocss-preset-weapp
@@ -93,14 +93,20 @@ npm -D unocss unocss-preset-weapp
 ```js
 import { defineConfig } from "unocss";
 import presetWeapp from 'unocss-preset-weapp'
-export default defineConfig(
-  {
-    include: [/\.wxml$/],
-    presets: [
-      presetWeapp(),
-    ],
-  }
-)
+
+const include = [/\.wxml$/]
+
+export default defineConfig({
+  content:{
+    pipeline:{
+      include
+    }
+  },
+  presets: [
+    presetWeapp(),
+  ],
+  separators:'__'
+})
 ```
 
 ---
@@ -111,10 +117,6 @@ export default defineConfig(
 > 使用 `@unocss/cli` 监听文件内容，[参考文档](https://github.com/unocss/unocss/tree/main/packages/cli)
 ```json
 {
-  "devDependencies": {
-    "unocss": "^0.45.21",
-    "unocss-preset-weapp": "^0.1.13"
-  },
   "scripts": {
      "unocss": "unocss pages/**/*.wxml -c unocss.config.js --watch -o unocss.wxss",
      "unocss:build": "unocss pages/**/*.wxml -c unocss.config.js -o  unocss.wxss"
@@ -171,9 +173,9 @@ export default defineConfig(
 ---
 
 ## 使用 transformer
-> 原生小程序使用 `transformer` 会改变原文件，不推荐使用
+> `transformer` 可以将 `小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名`，根据规则替换
 
-@unocss/cli 在 [0.45.22](https://github.com/unocss/unocss/releases/tag/v0.45.22) 版本支持使用 `transformer`
+> 原生小程序使用 `transformer` 会改变原文件，不推荐使用
 
 * unocss.confit.js
 > 添加 `transformerClass`，设置转换 `wxml` 文件
@@ -185,7 +187,11 @@ import { transformerClass } from 'unocss-preset-weapp/transformer';
 const include = [/\.wxml$/]
 
 export default defineConfig({
-  include,
+  content:{
+    pipeline:{
+      include
+    }
+  },
   presets: [
     presetWeapp(),
   ],
