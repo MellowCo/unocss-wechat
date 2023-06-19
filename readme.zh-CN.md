@@ -172,6 +172,7 @@ export default defineConfig(
 
 ## 使用 transformer
 > 原生小程序使用 `transformer` 会改变原文件，不推荐使用
+
 @unocss/cli 在 [0.45.22](https://github.com/unocss/unocss/releases/tag/v0.45.22) 版本支持使用 `transformer`
 
 * unocss.confit.js
