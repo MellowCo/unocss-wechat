@@ -74,10 +74,10 @@ export default defineConfig({
 > 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名, 
 
 1. 使用 `hex` 代替 `#` , `_` 代替 `:`  `/`
-    * 例如 `bg-#81ecec/50` 可以转换为 `bg-hex-81ecec_50` 表示
+    * 例如 `bg-#81ecec/50` 可以使用 `bg-hex-81ecec_50` 表示
 
 2. 针对 `hover:` 和 `avtive:`, 可以设置 `separators` 指定分隔符
-    * 例如设置 `separators` 为 `__`，`hover:bg-red-500` 可以转换为 `hover__bg-red-500` 表示
+    * 例如设置 `separators` 为 `__`，`hover:bg-red-500` 可以使用 `hover__bg-red-500` 表示
 
 
 
