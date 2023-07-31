@@ -73,15 +73,15 @@ export default defineConfig({
 >
 > 由于小程序不支持 \\ \\: \\[ \\$ \\. 等转义类名, 
 
-1. 使用 `hex` 代替 `#` , `_` 代替 `:`  `/`
+- 使用 `hex` 代替 `#` , `_` 代替 `:`  `/`
     * 例如 `bg-#81ecec/50` 可以使用 `bg-hex-81ecec_50` 表示
 
-2. 针对 `hover:` 和 `avtive:`, 可以设置 `separators` 指定分隔符
+- 针对 `hover:` 和 `avtive:`, 可以设置 `separators` 指定分隔符
     * 例如设置 `separators` 为 `__`，`hover:bg-red-500` 可以使用 `hover__bg-red-500` 表示
 
 
 
-[小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
+1. [小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，安装 `unocss unocss-preset-weapp`
 
 ```shell
 npm -D unocss unocss-preset-weapp
@@ -112,7 +112,7 @@ export default defineConfig({
 ---
 ## 生成wxss文件
 
-在`package.json`，设置 `script`
+3. 在`package.json`，设置 `script`
 
 > 使用 `@unocss/cli` 监听文件内容，[参考文档](https://github.com/unocss/unocss/tree/main/packages/cli)
 ```json
@@ -207,5 +207,9 @@ export default defineConfig({
 
 ![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209212019320.gif)
 
+
+## 其它说明
+
+- 原生小程序暂不支持 `box-shadow` 连体写法，像是`,`, `[` 这些符合因为平台限制，无法走 `transformer`，所以没有什么好的办法。建议使用[内置预设](https://github.com/MellowCo/unocss-preset-weapp#box-shadow), 如果无法满足需要，也可以直接写css。相关讨论：[issues](https://github.com/MellowCo/unocss-preset-weapp/issues/92)。
 
 
