@@ -67,14 +67,14 @@ export default defineConfig({
 >
 > because the miniprogram does not support escape class, like `\` `\:` `\[` `\$` `\.`, so need transform  `bg-#81ecec/50` to `bg-hex-81ecec_50`
 
-1. use 'hex' instead of '#' , `_` instead of `:` `/`
+- use 'hex' instead of '#' , `_` instead of `:` `/`
     * for example, `bg-#81ecec/50` can be converted to `bg-hex-81ecec_50`
 
-2. for '`hover:` and `active:`, `separators` can be set to specify the separator
+- for '`hover:` and `active:`, `separators` can be set to specify the separator
     * for example, setting `separators` to `__`, `hover:bg-red-500` can be converted to `hover__bg-red-500`
 
 
-[use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
+1. [use npm in miniprogram](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)，install `unocss unocss-preset-weapp`
 
 ```shell
 npm -D unocss unocss-preset-weapp
@@ -105,7 +105,7 @@ export default defineConfig({
 ---
 ## generate unocss.wxss
 
-1. `package.json`，setting `script`
+3. `package.json`，setting `script`
 > use `@unocss/cli` to listen to file content，[documents](https://github.com/unocss/unocss/tree/main/packages/cli)
 ```json
 {
@@ -192,5 +192,6 @@ export default defineConfig({
 
 ![](https://fastly.jsdelivr.net/gh/MellowCo/image-host/2022/202209212019320.gif)
 
+## Additional Notes
 
-
+- At this time, the `box-shadow` shorthand notations like `,` and `[` aren't compatible with native mini-programs. This is due to certain restrictions on the platform that prevent the `transformer` from processing these notations. Therefore, a straightforward solution isn't available. We suggest using the [pre-configured](https://github.com/MellowCo/unocss-preset-weapp#box-shadow) settings instead. If these don't suffice, feel free to write your own CSS. You can find more discussion on this topic in this [thread](https://github.com/MellowCo/unocss-preset-weapp/issues/92).
