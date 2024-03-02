@@ -12,5 +12,5 @@ export default defineConfig({
     presets: [
       presetWeapp(),
     ],
-    separators:'__'
+    separators:'__',
   })

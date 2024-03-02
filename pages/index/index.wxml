@@ -6,11 +6,11 @@
       </view>
       <view class="bg-hex-81ecec_50">hello unocss</view>
 
-      <view class="my-5 text--w-123ccc-s-90 bg--fl-rgba-bl-1-co-2-co-3-co-0-d-5-br--fr-">
+      <view class="my-5">
         hello unocss
       </view>
 
-      <view class="flex">
+      <view class="flex mt-2">
         输入框：<input type="text" class="border-10 border-blue border-solid active__border-red"/>
       </view>
 

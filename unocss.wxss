@@ -9,6 +9,7 @@ page,::before,::after{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-
 .m-20{margin:160rpx;}
 .my-5{margin-top:40rpx;margin-bottom:40rpx;}
 .mb-10{margin-bottom:80rpx;}
+.mt-2{margin-top:16rpx;}
 .bg-green-500{--un-bg-opacity:1;background-color:rgba(34,197,94,var(--un-bg-opacity));}
 .bg-hex-81ecec_50{background-color:rgba(129,236,236,0.5);}
 .border-10{border-width:10rpx;}
